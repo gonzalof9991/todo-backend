@@ -4,6 +4,9 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
 COPY . .
+
+# Establecemos los permisos adecuados
+RUN chmod 600 docker-entrypoint.sh
 CMD ["/bin/bash", "docker-entrypoint.sh"]
 # Build -> docker build -t "message: flask-smorest-api" .
 # Run Docker -> docker run -dp 5000:5000 flask-smorest-api
